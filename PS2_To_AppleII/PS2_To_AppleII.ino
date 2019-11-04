@@ -114,7 +114,7 @@ void setup()
   //-------------------------  
   
   Serial.begin(9600);
-  Serial.println("Keyboard Test:");
+  Serial.println("Keyboard PS/2 to Apple II v1.00 (DEBUG)\n\r");
 
   //-------------------------
 
@@ -145,6 +145,8 @@ void loop()
 
   //---------------------------
 
+  Serial.print("> ");
+  
   if ( data & PS2_BREAK ) Serial.print("BREAK, ");
   if ( data & PS2_SHIFT ) Serial.print("SHIFT, ");
   if ( data & PS2_CTRL ) Serial.print("CTRL, ");
@@ -170,6 +172,17 @@ void loop()
       
       return;
     }
+
+    if ( data & PS2_SHIFT ) 
+    {
+      switch ( chr ) 
+      {
+        case PS2_KEY_INTL1: // ?
+          apII_send_key(0xBF); break;
+      }
+      
+      return;
+    }
     
     switch ( chr ) 
     {    
@@ -189,6 +202,10 @@ void loop()
       
       case PS2_KEY_R_ARROW:
         apII_send_key(0x95); break;
+
+      case PS2_KEY_INTL1: // /
+        apII_send_key(0xAF); break;
+        
     }
     
     return;
@@ -223,7 +240,7 @@ void loop()
         case 95: { apII_send_key(0xBB); break; } // +
         // case 93: { break; }  // `
         // case 94: { break; }  // {
-        case 58: { apII_send_key(0xCE); break; } // ^
+        case 58: { apII_send_key(0xDE); break; } // ^
         // case 92: { break; }  // }
         case 59: { apII_send_key(0xBC); break; } // <
         case 61: { apII_send_key(0xBE); break; } // >
@@ -304,7 +321,6 @@ void loop()
         case 59: { apII_send_key(0xAC); break; }      // ,
         case 61: { apII_send_key(0xAE); break; }      // .
         case 62: { apII_send_key(0xBB); break; }      // ;
-        // case 145: { break; } // /
       }
     }
   }
