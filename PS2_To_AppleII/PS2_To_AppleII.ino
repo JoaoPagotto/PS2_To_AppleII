@@ -1,3 +1,18 @@
+//-----------------------------------------------------------------------------
+//  
+//  Keyboard PS/2 to Apple II v1.00
+//  
+//  Date: 2019-11-03 23:00am
+//  
+//  João Ricardo Pagotto
+//  https://github.com/joaopagotto
+//  
+//  This is free open-source software, distributed under a very liberal license 
+//  (the well-known MIT license). It may be used for any purpose, including 
+//  commercial purposes, at absolutely no cost. Just download it and use it.
+//
+//-----------------------------------------------------------------------------
+
 #include <PS2KeyAdvanced.h>
 
 PS2KeyAdvanced keyboard;
