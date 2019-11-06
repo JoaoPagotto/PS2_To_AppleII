@@ -91,7 +91,9 @@ void setup()
 
   keyboard.begin(PS2_DATA, PS2_IRQ); // Setup keyboard pins
   keyboard.setNoBreak(1);            // No break codes for keys (when key released)
-  keyboard.setNoRepeat(1);           // Don't repeat shift ctrl etc
+  keyboard.setNoRepeat(1);           // Don't repeat shift ctrl etc  
+  keyboard.setLock(PS2_LOCK_NUM);    // Sets the current status of Locks and LEDs
+  
 }
 
 //-----------------------------------------------------------------------------
